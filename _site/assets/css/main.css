@@ -411,10 +411,15 @@ body {
   margin: 0;
   background-color: var(--background); /* 保持原来的背景颜色 */
   /* 设置背景图片 */
-  background-image: url('/assets/img/background.jpg'); /* 设置背景图片 */
-  background-size: cover; /* 让背景铺满整个屏幕 */
-  background-position: center; /* 让背景居中 */
-  background-attachment: fixed; /* 固定背景，使其不随滚动条滚动 */
+  background-image: url('/assets/img/background.jpg'); 
+  background-size: cover;  
+  background-position: center;  
+  background-repeat: no-repeat;  
+  background-attachment: fixed;  
+  background-origin: border-box;  
+  background-clip: border-box;  
+  background-color: rgba(255, 255, 255, 0.95); /* 作为背景图片加载失败时的备用颜色 */
+
  /* 设置背景图片*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
