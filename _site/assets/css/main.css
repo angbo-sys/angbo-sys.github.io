@@ -31,7 +31,7 @@ html[data-theme="dark"]  {
   --accent-dark:  #DBBEA1;    /* accent 2   */
   --main:         #5F8081;    /* main color */
   --main-dim:     #333D47;    /* dimmed version of main color */
-  --text:         #CBCCCD;
+  --text:         #000000;
   --grey1:        #B1B1AE;
   --grey2:        #959692;
   --grey3:        #7C7E7B;
