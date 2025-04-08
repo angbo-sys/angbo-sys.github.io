@@ -29,7 +29,7 @@ html {
 html[data-theme="dark"]  {
   --accent:       #d14c47;    /* accent     */
   --accent-dark:  #DBBEA1;    /* accent 2   */
-  --main:         #00f7ff;    /* main color */
+  --main:         #00ffff;    /* main color */
   --main-dim:     #333D47;    /* dimmed version of main color */
   --text:         #000000;
   --grey1:        #B1B1AE;
