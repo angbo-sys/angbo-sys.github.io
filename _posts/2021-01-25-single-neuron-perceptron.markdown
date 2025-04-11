@@ -11,95 +11,73 @@ author: Armando Maynez
 github:  amaynez/Perceptron/
 mathjax: yes
 ---
-As an entry point to learning python and getting into Machine Learning, I decided to code from scratch the Hello World! of the field, a single neuron perceptron.
+### 你在我光影之间
+## 一、初见
+张钦凯第一次见到付家俊，是在大学图书馆。
 
-## What is a perceptron?
+那天阳光正好，窗外的银杏叶在风中打着旋儿落下。图书馆靠窗的位置，阳光透过落地玻璃，斜斜洒在一排安静读书的人身上。
 
-A perceptron is the basic building block of a neural network, it can be compared to a neuron, And its conception is what detonated the vast field of Artificial Intelligence nowadays.
+张钦凯抱着几本厚重的编程书在找座位，眼神却在看到某个人时不由一顿。
 
-Back in the late 1950's, a young [Frank Rosenblatt](https://en.wikipedia.org/wiki/Frank_Rosenblatt) devised a very simple algorithm as a foundation to construct a machine that could learn to perform different tasks.
+靠窗的男生穿着白衬衫，戴着黑框眼镜，正在专注地看书。他眉头轻蹙，指尖在笔记本上轻轻划过，好像在推理一个复杂的逻辑。
 
-In its essence, a perceptron is nothing more than a collection of values and rules for passing information through them, but in its simplicity lies its power.
+阳光落在他睫毛上，给他整个人镀了一层柔光。
 
-<center><img src='./assets/img/posts/20210125/Perceptron.png'></center>
+那一刻，张钦凯莫名觉得：这个人，很特别。
 
-Imagine you have a 'neuron' and to 'activate' it, you pass through several input signals, each signal connects to the neuron through a synapse, once the signal is aggregated in the perceptron, it is then passed on to one or as many outputs as defined. A perceptron is but a neuron and its collection of synapses to get a signal into it and to modify a signal to pass on.
+他鼓起勇气在他对面坐下。对方抬头看了他一眼，点点头，算是打了招呼。那一眼清澈而平静，却在张钦凯心里轻轻搅动了什么。
 
-In more mathematical terms, a perceptron is an array of values (let's call them weights), and the rules to apply such values to an input signal.
+## 二、靠近
+两人的第一次对话，居然是因为一本书。
 
-For instance a perceptron could get 3 different inputs as in the image, lets pretend that the inputs it receives as signal are: $x_1 = 1, \; x_2 = 2\; and \; x_3 = 3$, if it's weights are $w_1 = 0.5,\; w_2 = 1\; and \; w_3 = -1$ respectively, then what the perceptron will do when the signal is received is to multiply each input value by its corresponding weight, then add them up.
+“你也在看这本？”付家俊轻声问，指了指张钦凯刚刚放下的《Python数据分析》。
 
-<p style="text-align:center">\(<br>
-\begin{align}
-\begin{split}
-\left(x_1 * w_1\right) + \left(x_2 * w_2\right) + \left(x_3 * w_3\right)
-\end{split}
-\end{align}
-\)</p>
+张钦凯笑了：“嗯，选修课要交个项目，但其实……我完全看不懂。”
 
-<p style="text-align:center">\(<br>
-\begin{align}<br>
-\begin{split}<br>
-\left(0.5 * 1\right) + \left(1 * 2\right) + \left(-1 * 3\right) = 0.5 + 2 - 3 = -0.5
-\end{split}<br>
-\end{align}<br>
-\)</p>
+付家俊嘴角微微一扬：“要不要我帮你看看？我上学期刚做过类似的。”
 
-Typically when this value is obtained, we need to apply an "activation" function to smooth the output, but let's say that our activation function is linear, meaning that we keep the value as it is, then that's it, that is the output of the perceptron, -0.5.
+于是，他们从一起讨论代码开始，慢慢靠近。
 
-In a practical application, the output means something, perhaps we want our perceptron to classify a set of data and if the perceptron outputs a negative number, then we know the data is of type A, and if it is a positive number then it is of type B.
+图书馆、食堂、操场、自习室……他们一起走过的地方越来越多。
 
-Once we understand this, the magic starts to happen through a process called backpropagation, where we "educate" our tiny one neuron brain to have it learn how to do its job.
+张钦凯喜欢摄影，镜头里经常悄悄记录下付家俊看书、发呆、甚至打盹的模样。
+付家俊喜欢敲代码，每当卡壳时，张钦凯总会坐在旁边，一边听音乐一边陪着他，有时候还递上一杯自己偷偷买来的热美式。
 
-<tweet>The magic starts to happen through a process called backpropagation, where we "educate" our tiny one neuron brain to have it learn how to do its job.</tweet>
+他们谁也没说破那点心照不宣的喜欢，但心跳总会在不经意的眼神交汇里暴露。
 
-For this we need a set of data that it is already classified, we call this a training set. This data has inputs and their corresponding correct output. So we can tell the little brain when it misses in its prediction, and by doing so, we also adjust the weights a bit in the direction where we know the perceptron committed the mistake hoping that after many iterations like this the weights will be so that most of the predictions will be correct.
+## 三、告白
+那个冬天，第一场雪来的很早。
 
-After the model trains successfully we can have it classify data it has never seen before, and we have a fairly high confidence that it will do so correctly.
+深夜，他们从实验室出来，走在通往宿舍的小路上。路灯拉长了他们的影子，地面开始飘起了细细的雪。
 
-The math behind this magical property of the perceptron is called gradient descent, and is just a bit of differential calculus that helps us convert the error the brain is having into tiny nudges of value of the weights towards their optimum. [This video series by 3 blue 1 brown explains it wonderfuly.](https://www.youtube.com/watch?v=aircAruvnKk&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi)
+张钦凯突然停下脚步，低声说：
 
-My program creates a single neuron neural network tuned to guess if a point is above or below a randomly generated line and generates a visualization based on graphs to see how the neural network is learning through time.
+“付家俊。”
 
-The neuron has 3 inputs and weights to calculate its output:
-    
-    input 1 is the X coordinate of the point,
-    Input 2 is the y coordinate of the point,
-    Input 3 is the bias and it is always 1
+“嗯？”
 
-    Input 3 or the bias is required for lines that do not cross the origin (0,0)
+“你知道吗，其实我一直都……挺喜欢你的。”
 
-The Perceptron starts with weights all set to zero and learns by using 1,000 random points per each iteration.
+他呼出的热气在冷空气中化作雾气，声音小得仿佛怕惊动这雪夜。
 
-The output of the perceptron is calculated with the following activation function:
-    if x * weight_x + y weight_y + weight_bias is positive then 1 else 0
+付家俊愣了一下，然后笑了，轻轻伸出手，握住了张钦凯的手。
 
-The error for each point is calculated as the expected outcome of the perceptron minus the real outcome therefore there are only 3 possible error values:
+手心有点冰，但那一握很稳。
 
-|Expected  |  Calculated | Error|
-|:----:|:----:|:----:|
-|1|-1|1|
-|1|1|0|
-|-1|-1|0|
-|-1|1|-1|
+“我也是。”
 
-With every point that is learned if the error is not 0 the weights are adjusted according to:
+那一瞬间，风停了，雪落得更轻了。世界静谧，仿佛只有他们两人存在。
+四、余光
+从那天起，他们再也不需要藏着彼此的喜欢。
 
-    New_weight = Old_weight + error * input * learning_rate
-    for example: New_weight_x = Old_weight_x + error * x * learning rate
+他们一起熬夜做毕设，一起去看海，一起为了未来的城市投简历。
 
-A very useful parameter in all of neural networks is teh learning rate, which is basically a measure on how tiny our nudge to the weights is going to be. 
+也会吵架，会闹别扭，但从来没放开过那双手。
 
-In this particular case, I coded the learning_rate to decrease with every iteration as follows:
+有时朋友会打趣他们：“你们俩也太像老夫老妻了吧。”
 
-    learning_rate = 0.01 / (iteration + 1)
+张钦凯只是笑着说：“没办法，谁让我喜欢上了他。”
 
-this is important to ensure that once the weights are nearing the optimal values the adjustment in each iteration is subsequently more subtle.
+付家俊在一旁，拿着咖啡轻轻碰了他一下：“是我先喜欢的好吧。”
 
-<center><img src='./assets/img/posts/20210125/Learning_1000_points_per_iteration.jpg'></center>
-
-In the end, the perceptron always converges into a solution and finds with great precision the line we are looking for.
-
-Perceptrons are quite a revelation in that they can resolve equations by learning, however they are very limited. By their nature they can only resolve linear equations, so their problem space is quite narrow. 
-
-Nowadays the neural networks consist of combinations of many perceptrons, in many layers, and other types of "neurons", like convolution, recurrent, etc. increasing significantly the types of problems they solve.
+有些人，就像光，照进你人生最平淡的时刻，却让你记一辈子。
