@@ -1,6 +1,6 @@
 ### Site info:
-title: Freshman21
-tagline: Another Jekyll theme, Freshman twenty-first
+title: angbo's blog
+tagline: a student's blog
 author: angbo-sys
 email: 1509934153@qq.com
 description: "Freshman21 is a Jekyll blog theme." # You can edit this line in _config.yml. It will appear in your document head meta and in your feed.xml site description
@@ -10,10 +10,10 @@ url: "https://yulijia.net/freshman21" # the base hostname & protocol for your si
 locale: en_US
 
 ### Personal info and site tools info:
-twitter_username: yulijia
+twitter_username: 
 github_username:  angbo-sys
 disqus_shortname: freshman21
-favicon:     "/images/favicon.ico"
+favicon:     "/images/favicon(1).ico"
 aboutme: Hi, this is angbo, a student. # these are shown on aboutme-sidebar.
 aboutme_photo: "/images/avatar.jpg" # this is shown on aboutme-sidebar.
 google_analytics_key: UA-57979084-1 # put YOUR key here to enable tracking! (blank to disable)
