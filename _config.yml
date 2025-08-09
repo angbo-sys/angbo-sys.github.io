@@ -15,7 +15,7 @@ github_username:  angbo-sys
 disqus_shortname: freshman21
 favicon:     "/images/favicon.ico"
 aboutme: Hi, this is angbo, a student. # these are shown on aboutme-sidebar.
-aboutme_photo: https://i.imgur.com/Mdc4szJl.jpg# your photo.
+aboutme_photo: "/images/avatar.jpg" # this is shown on aboutme-sidebar.
 google_analytics_key: UA-57979084-1 # put YOUR key here to enable tracking! (blank to disable)
 
 
