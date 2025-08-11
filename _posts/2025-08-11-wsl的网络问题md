@@ -1,0 +1,104 @@
+---
+published: true
+title: wsl的网络问题
+layout: post
+author: angbo
+category: Uncategorized
+tags: wsl
+
+---
+
+---
+在 Windows 下使用 WSL2（Windows Subsystem for Linux）时，有时会遇到以下问题：
+
+* `apt update` / `ping google.com` / `git clone` 等命令提示 **"Temporary failure in name resolution"** 或 **"Could not resolve host"**
+
+这种问题的本质是 **WSL 内部的 `/etc/resolv.conf` 配置了一个无法正常访问的 DNS 服务器**。
+
+---
+
+
+### **1. 让 DNS 设置永久生效**
+
+WSL 默认会在重启时覆盖 `/etc/resolv.conf`，我们需要禁用它的自动生成。
+
+1. 编辑 WSL 配置：
+
+   ```bash
+   sudo vim /etc/wsl.conf
+   ```
+
+   写入：
+
+   ```conf
+   [network]
+   generateResolvConf = false
+   ```
+
+
+3. 重启 WSL：
+
+   ```powershell
+   wsl --shutdown
+   wsl
+   ```
+---
+
+### **2.解决办法**
+
+#### **1：使用当前 Wi-Fi 的 IPv4 地址**
+
+
+1. 在 PowerShell 中查看 Wi-Fi IPv4：
+
+   ```powershell
+   ipconfig
+   ```
+
+   找到 `无线局域网适配器 WLAN` → `IPv4 地址`（例如 `192.168.1.5`）。
+
+2. 在 WSL 中：
+
+   ```bash
+   sudo vim /etc/resolv.conf
+   ```
+
+   改成：
+
+   ```conf
+   nameserver 192.168.1.5
+   nameserver 114.114.114.114
+
+   ```
+   * 如果遇到无法修改文件，可以试试这个 `sudo chattr -i /etc/resolv.conf` 
+
+3. 保存并退出，然后测试：
+
+   ```bash
+   ping baidu.com
+   ```
+
+---
+
+#### **2：使用 WSL 的虚拟网关的IPv4**
+
+1. 在 Windows 中查看：
+
+   ```powershell
+   ipconfig
+   ```
+
+   找到 `vEthernet (Default Switch)` → `IPv4 地址`（例如 `172.27.240.1`）。
+
+2. 修改 WSL DNS：
+
+   ```bash
+   sudo vim /etc/resolv.conf
+   nameserver 172.27.240.1
+   nameserver 114.114.114.114
+   ```
+
+3. 保存并测试。
+
+---
+
