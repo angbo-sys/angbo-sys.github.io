@@ -23,6 +23,7 @@ body {
   color: #111;
   background-color: #f9f9f9;
   -webkit-text-size-adjust: 100%;
+  cursor: url('{{ "/images/topbutton.png" | prepend: site.baseurl }}'), auto;
 }
 
 /**
@@ -903,6 +904,7 @@ body {
   color: #111;
   background-color: #f9f9f9;
   -webkit-text-size-adjust: 100%;
+  cursor: url('{{ "/images/topbutton.png" | prepend: site.baseurl }}'), auto;
 }
 
 /**
