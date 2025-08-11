@@ -143,7 +143,13 @@ body.dark-mode {
     background-color: #2a2a2a; /* 设置一个深色背景 */
     border: 1px solid #444;   /* 添加一个边框以便区分 */
   }
+  .site-nav .menu-icon {
+    background-color: #2a2a2a; /* 将图标背景也设为深色 */
+  }
 
+  .site-nav .menu-icon > svg path {
+    fill: #e0e0e0; /* 将图标的三条横线变为浅色 */
+  }
   .site-nav .page-link {
     color: #e0e0e0; /* 确保链接文字是浅色的 */
   }
