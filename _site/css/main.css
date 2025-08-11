@@ -1706,6 +1706,7 @@ body.dark-mode .sidebar-module h4 {
 body.dark-mode .site-footer {
   border-top-color: #333;
   color: #888;
+  background-color: transparent;
 }
 body.dark-mode hr {
   border-bottom-color: #444;
