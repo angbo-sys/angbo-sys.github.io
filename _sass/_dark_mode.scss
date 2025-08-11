@@ -54,6 +54,7 @@ body.dark-mode {
     background-color: transparent;
   }
 
+
   hr {
     border-bottom-color: #444;
   }
@@ -136,5 +137,14 @@ body.dark-mode {
     .vg { color: #e06c75 } /* Name.Variable.Global */
     .vi { color: #e06c75 } /* Name.Variable.Instance */
     .il { color: #d19a66 } /* Literal.Number.Integer.Long */
+  }
+    /* 修复移动端导航菜单的暗色模式 */
+  .site-nav .trigger {
+    background-color: #2a2a2a; /* 设置一个深色背景 */
+    border: 1px solid #444;   /* 添加一个边框以便区分 */
+  }
+
+  .site-nav .page-link {
+    color: #e0e0e0; /* 确保链接文字是浅色的 */
   }
 }
