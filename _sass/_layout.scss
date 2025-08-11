@@ -92,7 +92,7 @@
       display: none;
     }
 
-    &:active .trigger {
+    &.active .trigger {
       display: block;
       padding-bottom: 5px;
     }
