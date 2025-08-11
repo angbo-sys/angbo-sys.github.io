@@ -320,3 +320,26 @@ cite{
   font-style: italic;
   text-decoration: underline;
 }
+
+
+body,
+.site-header,
+.site-nav,
+.site-footer,
+.post-content,
+.post-title,
+.post-meta,
+.page-link,
+.sidebar-module,
+.site-title a,
+.site-nav .page-link,
+.post-content a,
+#theme-toggle {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+pre, 
+code,
+.highlight {
+    transition: background-color 0.4s ease;
+}

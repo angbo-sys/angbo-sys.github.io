@@ -23,7 +23,6 @@ body {
   color: #111;
   background-color: #f9f9f9;
   -webkit-text-size-adjust: 100%;
-  cursor: url('{{ "/images/topbutton.png" | prepend: site.baseurl }}'), auto;
 }
 
 /**
@@ -285,6 +284,28 @@ cite {
   text-decoration: underline;
 }
 
+body,
+.site-header,
+.site-nav,
+.site-footer,
+.post-content,
+.post-title,
+.post-meta,
+.page-link,
+.sidebar-module,
+.site-title a,
+.site-nav .page-link,
+.post-content a,
+#theme-toggle {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+pre,
+code,
+.highlight {
+  transition: background-color 0.4s ease;
+}
+
 /**
  * Site header
  */
@@ -360,7 +381,7 @@ cite {
     clear: both;
     display: none;
   }
-  .site-nav:hover .trigger {
+  .site-nav.active .trigger {
     display: block;
     padding-bottom: 5px;
   }
@@ -904,7 +925,6 @@ body {
   color: #111;
   background-color: #f9f9f9;
   -webkit-text-size-adjust: 100%;
-  cursor: url('{{ "/images/topbutton.png" | prepend: site.baseurl }}'), auto;
 }
 
 /**
@@ -1166,6 +1186,28 @@ cite {
   text-decoration: underline;
 }
 
+body,
+.site-header,
+.site-nav,
+.site-footer,
+.post-content,
+.post-title,
+.post-meta,
+.page-link,
+.sidebar-module,
+.site-title a,
+.site-nav .page-link,
+.post-content a,
+#theme-toggle {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+pre,
+code,
+.highlight {
+  transition: background-color 0.4s ease;
+}
+
 /**
  * Site header
  */
@@ -1241,7 +1283,7 @@ cite {
     clear: both;
     display: none;
   }
-  .site-nav:hover .trigger {
+  .site-nav.active .trigger {
     display: block;
     padding-bottom: 5px;
   }
@@ -1670,6 +1712,7 @@ body.dark-mode {
   background-color: #1a1a1a;
   color: #e0e0e0;
   /* Syntax Highlighting for dark mode */
+  /* 修复移动端导航菜单的暗色模式 */
 }
 body.dark-mode .container {
   background-color: #242424;
@@ -1987,6 +2030,19 @@ body.dark-mode .highlight .vi {
 }
 body.dark-mode .highlight .il {
   color: #d19a66;
+}
+body.dark-mode .site-nav .trigger {
+  background-color: #2a2a2a; /* 设置一个深色背景 */
+  border: 1px solid #444; /* 添加一个边框以便区分 */
+}
+body.dark-mode .site-nav .menu-icon {
+  background-color: #2a2a2a; /* 将图标背景也设为深色 */
+}
+body.dark-mode .site-nav .menu-icon > svg path {
+  fill: #e0e0e0; /* 将图标的三条横线变为浅色 */
+}
+body.dark-mode .site-nav .page-link {
+  color: #e0e0e0; /* 确保链接文字是浅色的 */
 }
 
 /*# sourceMappingURL=main.css.map */
