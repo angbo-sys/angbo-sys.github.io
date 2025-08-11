@@ -3,7 +3,6 @@
 
 {% include head.html %}
 
-{% include head.html %}
 
 <!-- 指针图标 -->
 <style>
@@ -12,7 +11,6 @@
   }
 </style>
 
-<body>
 
 <body>
 
@@ -42,7 +40,24 @@
   {% include footer.html %}
 
 </div>
+<!-- Mobile menu toggle script -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var menuIcon = document.querySelector('.menu-icon');
+    var siteNav = document.querySelector('.site-nav');
+
+    if (menuIcon && siteNav) {
+        menuIcon.addEventListener('click', function (e) {
+            e.preventDefault(); // 防止链接跳转
+            // 点击时，在 .site-nav 元素上添加或移除 'active' 类
+            siteNav.classList.toggle('active');
+        });
+    }
+});
+</script>
+
 {% include theme_toggle.html %}
+
 
 </body>
 
