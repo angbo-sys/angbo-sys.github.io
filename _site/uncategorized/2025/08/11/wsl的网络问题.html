@@ -7,24 +7,24 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width initial-scale=1">
 
-<meta property="og:title" content="Categories">
-<title>Categories</title>
-<meta property="og:description" content="Freshman21 is a Jekyll blog theme.">
-<meta property="og:url" content="http://localhost:4000/categories/">
+<meta property="og:title" content="wsl的网络问题">
+<title>wsl的网络问题</title>
+<meta property="og:description" content="在 Windows 下使用 WSL2（Windows Subsystem for Linux）时，有时会遇到以下问题：  apt update / ping google.com / git clone 等命令提示 “Temporary failure in name resolution” 或 “Could n...">
+<meta property="og:url" content="http://localhost:4000/uncategorized/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98.html">
 <meta property="og:site_name" content="angbo's blog">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@">
 <meta name="twitter:creator" content="@">
-<meta name="twitter:title" content="Categories">
-<meta name="twitter:description" content="Freshman21 is a Jekyll blog theme.">
-<meta name="twitter:url" content="http://localhost:4000/categories/">
+<meta name="twitter:title" content="wsl的网络问题">
+<meta name="twitter:description" content="在 Windows 下使用 WSL2（Windows Subsystem for Linux）时，有时会遇到以下问题：  apt update / ping google.com / git clone 等命令提示 “Temporary failure in name resolution” 或 “Could n...">
+<meta name="twitter:url" content="http://localhost:4000/uncategorized/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98.html">
 
 <meta name="keywords" content="Jekyll, theme, Freshman21,blog">
 
 <link rel="icon" href="/images/favicon_1.ico">
 <link rel="stylesheet" href="/css/main.css">
-<link rel="canonical" href="http://localhost:4000/categories/">
+<link rel="canonical" href="http://localhost:4000/uncategorized/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98.html">
 <link rel="alternate" type="application/atom+xml" title="angbo's blog" href="http://localhost:4000/feed.xml" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -129,40 +129,190 @@ for (var b = blocklink.length; b--;) {
     
 
   <div class="page-content col-sm-8">
-    <div class="post">
+    <div class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title">分类目录</h1>
+    <h1 itemprop="name" class="post-title">wsl的网络问题</h1>
+    <meta itemprop="keywords" content="wsl" />
+    <p class="post-meta">
+    目录:
+    
+    <a href="/categories/#Uncategorized">Uncategorized</a>
+     
+    
+    | 标签:
+    
+    <a href="/tags/#wsl" title="wsl">wsl</a>
+    
+    
+    <time itemprop="datePublished" datetime="2025-08-11">
+    | 发表时间: Aug 11, 2025
+    </time>
+    </p>
   </header>
 
-  <article class="post-content about"> 
-    <ul class="tags-box">
+  <article class="post-content" itemprop="articleBody">
+    <hr />
+<p>在 Windows 下使用 WSL2（Windows Subsystem for Linux）时，有时会遇到以下问题：</p>
 
-
-<a href="#Uncategorized" title="Uncategorized" rel="2">Uncategorized<span class="size"> 2</span></a>
-
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">apt update</code> / <code class="language-plaintext highlighter-rouge">ping google.com</code> / <code class="language-plaintext highlighter-rouge">git clone</code> 等命令提示 <strong>“Temporary failure in name resolution”</strong> 或 <strong>“Could not resolve host”</strong></li>
 </ul>
 
-<ul class="tags-box">
+<p>这种问题的本质是 <strong>WSL 内部的 <code class="language-plaintext highlighter-rouge">/etc/resolv.conf</code> 配置了一个无法正常访问的 DNS 服务器</strong>。</p>
 
-<li id="Uncategorized">Uncategorized</li>
+<hr />
 
-<time datetime="2025-08-11">2025-08-11</time> &raquo;
-<a href="/uncategorized/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98.html" title="wsl的网络问题">wsl的网络问题</a><br />
+<h3 id="1-让-dns-设置永久生效"><strong>1. 让 DNS 设置永久生效</strong></h3>
 
-<time datetime="2025-08-09">2025-08-09</time> &raquo;
-<a href="/uncategorized/2025/08/09/hello.html" title="Hello world!">Hello world!</a><br />
+<p>WSL 默认会在重启时覆盖 <code class="language-plaintext highlighter-rouge">/etc/resolv.conf</code>，我们需要禁用它的自动生成。</p>
 
+<ol>
+  <li>
+    <p>编辑 WSL 配置：</p>
 
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>vim /etc/wsl.conf
+</code></pre></div>    </div>
 
-</ul>
+    <p>写入：</p>
+
+    <div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[<span class="n">network</span>]
+<span class="n">generateResolvConf</span> = <span class="n">false</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>重启 WSL：</p>
+
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wsl</span><span class="w"> </span><span class="nt">--shutdown</span><span class="w">
+</span><span class="n">wsl</span><span class="w">
+</span></code></pre></div>    </div>
+    <hr />
+  </li>
+</ol>
+
+<h3 id="2解决办法"><strong>2.解决办法</strong></h3>
+
+<h4 id="1使用当前-wi-fi-的-ipv4-地址"><strong>1：使用当前 Wi-Fi 的 IPv4 地址</strong></h4>
+
+<ol>
+  <li>
+    <p>在 PowerShell 中查看 Wi-Fi IPv4：</p>
+
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ipconfig</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <p>找到 <code class="language-plaintext highlighter-rouge">无线局域网适配器 WLAN</code> → <code class="language-plaintext highlighter-rouge">IPv4 地址</code>（例如 <code class="language-plaintext highlighter-rouge">192.168.1.5</code>）。</p>
+  </li>
+  <li>
+    <p>在 WSL 中：</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>vim /etc/resolv.conf
+</code></pre></div>    </div>
+
+    <p>改成：</p>
+
+    <div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nameserver</span> <span class="m">192</span>.<span class="m">168</span>.<span class="m">1</span>.<span class="m">5</span>
+<span class="n">nameserver</span> <span class="m">114</span>.<span class="m">114</span>.<span class="m">114</span>.<span class="m">114</span>
+
+</code></pre></div>    </div>
+    <ul>
+      <li>如果遇到无法修改文件，可以试试这个 <code class="language-plaintext highlighter-rouge">sudo chattr -i /etc/resolv.conf</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>保存并退出，然后测试：</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ping baidu.com
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+
+<h4 id="2使用-wsl-的虚拟网关的ipv4"><strong>2：使用 WSL 的虚拟网关的IPv4</strong></h4>
+
+<ol>
+  <li>
+    <p>在 Windows 中查看：</p>
+
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ipconfig</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <p>找到 <code class="language-plaintext highlighter-rouge">vEthernet (Default Switch)</code> → <code class="language-plaintext highlighter-rouge">IPv4 地址</code>（例如 <code class="language-plaintext highlighter-rouge">172.27.240.1</code>）。</p>
+  </li>
+  <li>
+    <p>修改 WSL DNS：</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>vim /etc/resolv.conf
+nameserver 172.27.240.1
+nameserver 114.114.114.114
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>保存并测试。</p>
+  </li>
+</ol>
+
+<hr />
 
 
   </article>
+  <hr />
+</div>
 
-  
 
-</div> 
+<section class="pager">
+  <ul>
+    
+    <li class="previous"><a href="/uncategorized/2025/08/09/hello.html" title="Hello world!">&larr; 前一页</a></li>
+    
+    
+    <li class="disabled"><a>后一页 &rarr;</a></li>
+    
+  </ul>
+</section>
+
+<script src="/js/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    if (e.target.nodeName.toUpperCase() != 'BODY') return;
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://localhost:4000/uncategorized/2025/08/09/hello.html';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+
+  var disqus_developer = 1;
+
+var disqus_shortname ='freshman21';
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
 
     <section class="pager">
   
