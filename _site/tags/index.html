@@ -83,7 +83,7 @@ for (var b = blocklink.length; b--;) {
   <div class="wrapper">
 
     <h1 class="site-title"><a href="/">angbo's blog</a></h1>
-    <h3 class="site-meta">a student's blog</h3>
+    <h3 class="site-meta">A student's blog</h3>
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-<button id="theme-toggle" title="Toggle dark mode">🌙</button>
+<!-- <button id="theme-toggle" title="Toggle dark mode">🌙</button>
 
 <style>
 #theme-toggle {
@@ -417,6 +417,227 @@ document.addEventListener('DOMContentLoaded', (event) => {
         let newTheme = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
         localStorage.setItem('theme', newTheme);
         applyTheme(newTheme);
+    });
+});
+</script> -->
+
+<!-- 
+<button id="theme-toggle" title="Toggle dark mode">🌙</button>
+
+<style>
+/* 按钮的基本样式 (无变化) */
+#theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    /* 注意：这里的 transition 被移除了，因为我们用新的动画逻辑 */
+}
+body.dark-mode #theme-toggle {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+}
+
+/* --- 新增：主题切换动画 --- */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff; /* 默认是亮色背景 */
+    z-index: 9999;
+    transform: translateX(-100%);
+    transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+body.dark-mode::before {
+    background-color: #202020; /* 暗色背景，请根据你的暗色模式背景调整 */
+}
+
+body.is-changing-theme::before {
+    transform: translateX(0);
+}
+/* --- 动画结束 --- */
+
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const sunIcon = '☀️';
+    const moonIcon = '🌙';
+    let isAnimating = false; // 防止连续点击
+
+    // 初始化主题（无动画）
+    const initTheme = () => {
+        const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark-mode' : 'light-mode');
+        if (savedTheme === 'dark-mode') {
+            body.classList.add('dark-mode');
+            themeToggle.innerHTML = sunIcon;
+        } else {
+            body.classList.remove('dark-mode');
+            themeToggle.innerHTML = moonIcon;
+        }
+    };
+
+    initTheme();
+
+    // 点击事件监听
+    themeToggle.addEventListener('click', () => {
+        if (isAnimating) return; // 如果动画正在进行，则不执行任何操作
+
+        isAnimating = true;
+        const isDark = body.classList.contains('dark-mode');
+        
+        // 1. 触发“幕布”拉开的动画
+        body.classList.add('is-changing-theme');
+
+        setTimeout(() => {
+            // 2. 在动画进行到一半时，立即切换主题
+            if (isDark) {
+                body.classList.remove('dark-mode');
+                themeToggle.innerHTML = moonIcon;
+                localStorage.setItem('theme', 'light-mode');
+            } else {
+                body.classList.add('dark-mode');
+                themeToggle.innerHTML = sunIcon;
+                localStorage.setItem('theme', 'dark-mode');
+            }
+        }, 300); // 动画时长的一半
+
+        setTimeout(() => {
+            // 3. 动画结束后，移除动画类，并将“幕布”收回
+            body.classList.remove('is-changing-theme');
+            isAnimating = false; // 允许再次点击
+        }, 600); // 整个动画时长
+    });
+});
+</script> -->
+
+
+
+
+
+<button id="theme-toggle" title="Toggle dark mode">🌙</button>
+
+<style>
+/* 按钮的基本样式 (无变化) */
+#theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #e0e0e0;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    /* 注意：这里的 transition 被移除了，因为我们用新的动画逻辑 */
+}
+body.dark-mode #theme-toggle {
+    background-color: #333;
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+/* --- 新增：主题切换动画 --- */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #e0e0e0; /* 默认是亮色背景 */
+    z-index: 9999;
+    transform: translateX(-100%);
+    transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+body.dark-mode::before {
+    background-color: #1a1a1a; /* 暗色背景，请根据你的暗色模式背景调整 */
+}
+
+body.is-changing-theme::before {
+    transform: translateX(0);
+}
+/* --- 动画结束 --- */
+
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const sunIcon = '☀️';
+    const moonIcon = '🌙';
+    let isAnimating = false; // 防止连续点击
+
+    // 初始化主题（无动画）
+    const initTheme = () => {
+        const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark-mode' : 'light-mode');
+        if (savedTheme === 'dark-mode') {
+            body.classList.add('dark-mode');
+            themeToggle.innerHTML = sunIcon;
+        } else {
+            body.classList.remove('dark-mode');
+            themeToggle.innerHTML = moonIcon;
+        }
+    };
+
+    initTheme();
+
+    // 点击事件监听
+    themeToggle.addEventListener('click', () => {
+        if (isAnimating) return; // 如果动画正在进行，则不执行任何操作
+
+        isAnimating = true;
+        const isDark = body.classList.contains('dark-mode');
+        
+        // 1. 触发“幕布”拉开的动画
+        body.classList.add('is-changing-theme');
+
+        setTimeout(() => {
+            // 2. 在动画进行到一半时，立即切换主题
+            if (isDark) {
+                body.classList.remove('dark-mode');
+                themeToggle.innerHTML = moonIcon;
+                localStorage.setItem('theme', 'light-mode');
+            } else {
+                body.classList.add('dark-mode');
+                themeToggle.innerHTML = sunIcon;
+                localStorage.setItem('theme', 'dark-mode');
+            }
+        }, 300); // 动画时长的一半
+
+        setTimeout(() => {
+            // 3. 动画结束后，移除动画类，并将“幕布”收回
+            body.classList.remove('is-changing-theme');
+            isAnimating = false; // 允许再次点击
+        }, 600); // 整个动画时长
     });
 });
 </script>
