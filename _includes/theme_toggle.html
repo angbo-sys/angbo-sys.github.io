@@ -1,0 +1,64 @@
+<button id="theme-toggle" title="Toggle dark mode">🌙</button>
+
+<style>
+#theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+body.dark-mode #theme-toggle {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const sunIcon = '☀️';
+    const moonIcon = '🌙';
+
+    // Function to apply theme
+    const applyTheme = (theme) => {
+        if (theme === 'dark-mode') {
+            body.classList.add('dark-mode');
+            themeToggle.innerHTML = sunIcon;
+        } else {
+            body.classList.remove('dark-mode');
+            themeToggle.innerHTML = moonIcon;
+        }
+    };
+
+    // Check for saved theme preference or use system preference
+    let currentTheme = localStorage.getItem('theme');
+    if (!currentTheme) {
+        currentTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark-mode' : 'light-mode';
+    }
+    
+    applyTheme(currentTheme);
+
+    // Add click event listener
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        let newTheme = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
+        localStorage.setItem('theme', newTheme);
+        applyTheme(newTheme);
+    });
+});
+</script>
