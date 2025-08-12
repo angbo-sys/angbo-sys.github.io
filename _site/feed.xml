@@ -5,12 +5,76 @@
     <description>Freshman21 is a Jekyll blog theme.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/zfeed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 11 Aug 2025 15:04:38 +0800</pubDate>
-    <lastBuildDate>Mon, 11 Aug 2025 15:04:38 +0800</lastBuildDate>
+    <pubDate>Tue, 12 Aug 2025 15:08:17 +0800</pubDate>
+    <lastBuildDate>Tue, 12 Aug 2025 15:08:17 +0800</lastBuildDate>
     <generator>Jekyll v4.4.1</generator>
     
       <item>
-        <title>wsl的网络问题</title>
+        <title>WSL的网络问题(2)</title>
+        <description>&lt;h2 id=&quot;问题一ip-a-只显示一个-lo-网络适配器&quot;&gt;问题一：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ip a&lt;/code&gt; 只显示一个 lo 网络适配器&lt;/h2&gt;
+
+&lt;h3 id=&quot;解决方法删除-wslconfig-文件&quot;&gt;解决方法：删除 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.wslconfig&lt;/code&gt; 文件&lt;/h3&gt;
+
+&lt;p&gt;首先尝试删除 Windows 用户目录下的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.wslconfig&lt;/code&gt; 文件。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt;
+如果删除并重启后遇到 “wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理” 的错误，这可能是由于以前安装的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VMware&lt;/code&gt; 没有完全卸载干净。&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;解决方案：&lt;/strong&gt;&lt;/p&gt;
+  &lt;ol&gt;
+    &lt;li&gt;打开 Windows 的设备管理器，检查网络适配器是否出现问题（例如，报错“代码56”）。&lt;/li&gt;
+    &lt;li&gt;如果有问题，打开注册表 (regedit)，删除 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HKEY_CLASSES_ROOT\CLSID\{3d09c1ca-2bcc-40b7-b9bb-3f3ec143a87b}&lt;/code&gt; 项。&lt;/li&gt;
+  &lt;/ol&gt;
+
+  &lt;p&gt;这个方法也适用于其他因网络适配器导致“代码56”错误的情况。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;问题二提示-localhost-代理配置未镜像到-wsl&quot;&gt;问题二：提示 “localhost 代理配置未镜像到 WSL”&lt;/h2&gt;
+
+&lt;p&gt;如果只遇到 “检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理” 的问题，请按以下步骤操作：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;创建 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.wslconfig&lt;/code&gt; 文件&lt;/strong&gt;
+在您的 Windows 用户目录（通常是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C:\Users\你的用户名\&lt;/code&gt;）下创建一个新的文本文件，并将其命名为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.wslconfig&lt;/code&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;编辑 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.wslconfig&lt;/code&gt; 文件&lt;/strong&gt;
+在文件中输入以下内容：
+    &lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[experimental]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;autoMemoryReclaim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;gradual&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;networkingMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;mirrored&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;dnsTunneling&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;autoProxy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;重启 WSL 服务&lt;/strong&gt;
+打开 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PowerShell&lt;/code&gt; 或 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CMD&lt;/code&gt;，输入以下命令来关闭 WSL：
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wsl &lt;span class=&quot;nt&quot;&gt;--shutdown&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;关闭后，重新打开您的 WSL 发行版即可。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;检查网络连接&lt;/strong&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;如果重启后遇到无法访问外部网络的问题，请详见另一篇文章：&lt;a href=&quot;./2025-08-11-wsl的网络问题1.md&quot;&gt;《WSL的网络问题(1)》&lt;/a&gt;。&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Mon, 11 Aug 2025 21:00:00 +0800</pubDate>
+        <link>http://localhost:4000/wsl/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%982.html</link>
+        <guid isPermaLink="true">http://localhost:4000/wsl/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%982.html</guid>
+        
+        <category>wsl</category>
+        
+        
+        <category>wsl</category>
+        
+      </item>
+    
+      <item>
+        <title>WSL的网络问题(1)</title>
         <description>&lt;hr /&gt;
 &lt;p&gt;在 Windows 下使用 WSL2（Windows Subsystem for Linux）时，有时会遇到以下问题：&lt;/p&gt;
 
@@ -116,13 +180,13 @@ nameserver 114.114.114.114
 
 </description>
         <pubDate>Mon, 11 Aug 2025 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/uncategorized/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98.html</link>
-        <guid isPermaLink="true">http://localhost:4000/uncategorized/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98.html</guid>
+        <link>http://localhost:4000/wsl/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%981.html</link>
+        <guid isPermaLink="true">http://localhost:4000/wsl/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%981.html</guid>
         
         <category>wsl</category>
         
         
-        <category>Uncategorized</category>
+        <category>wsl</category>
         
       </item>
     

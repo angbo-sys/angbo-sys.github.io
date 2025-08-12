@@ -1,0 +1,9 @@
+<script>
+  (function() {
+    // 逻辑：如果本地存储不是'light'，就默认为黑暗模式。
+    // 这包括从未设置过（新用户）或已设置为'dark'的情况。
+    if (localStorage.getItem('theme') !== 'light') {
+      document.documentElement.classList.add('dark-mode');
+    }
+  })();
+</script>

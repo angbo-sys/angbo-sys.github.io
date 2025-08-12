@@ -15,24 +15,24 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width initial-scale=1">
 
-<meta property="og:title" content="angbo's blog">
-<title>angbo's blog</title>
-<meta property="og:description" content="Freshman21 is a Jekyll blog theme.">
-<meta property="og:url" content="http://localhost:4000/">
+<meta property="og:title" content="WSL的网络问题(1)">
+<title>WSL的网络问题(1)</title>
+<meta property="og:description" content="在 Windows 下使用 WSL2（Windows Subsystem for Linux）时，有时会遇到以下问题：  apt update / ping google.com / git clone 等命令提示 “Temporary failure in name resolution” 或 “Could n...">
+<meta property="og:url" content="http://localhost:4000/wsl/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%981.html">
 <meta property="og:site_name" content="angbo's blog">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@">
 <meta name="twitter:creator" content="@">
-<meta name="twitter:title" content="angbo's blog">
-<meta name="twitter:description" content="Freshman21 is a Jekyll blog theme.">
-<meta name="twitter:url" content="http://localhost:4000/">
+<meta name="twitter:title" content="WSL的网络问题(1)">
+<meta name="twitter:description" content="在 Windows 下使用 WSL2（Windows Subsystem for Linux）时，有时会遇到以下问题：  apt update / ping google.com / git clone 等命令提示 “Temporary failure in name resolution” 或 “Could n...">
+<meta name="twitter:url" content="http://localhost:4000/wsl/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%981.html">
 
 <meta name="keywords" content="Jekyll, theme, Freshman21,blog">
 
 <link rel="icon" href="/images/favicon_1.ico">
 <link rel="stylesheet" href="/css/main.css">
-<link rel="canonical" href="http://localhost:4000/">
+<link rel="canonical" href="http://localhost:4000/wsl/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%981.html">
 <link rel="alternate" type="application/atom+xml" title="angbo's blog" href="http://localhost:4000/feed.xml" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -146,117 +146,30 @@ for (var b = blocklink.length; b--;) {
     
 
   <div class="page-content col-sm-8">
-    <div class="home">
-  <div class="post" itemscope itemtype="http://schema.org/BlogPosting" >
+    <div class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
+  <header class="post-header">
+    <h1 itemprop="name" class="post-title">WSL的网络问题(1)</h1>
+    <meta itemprop="keywords" content="wsl" />
+    <p class="post-meta">
+    目录:
     
+    <a href="/categories/#wsl">wsl</a>
+     
+    
+    | 标签:
+    
+    <a href="/tags/#wsl" title="wsl">wsl</a>
+    
+    
+    <time itemprop="datePublished" datetime="2025-08-11">
+    | 发表时间: Aug 11, 2025
+    </time>
+    </p>
+  </header>
 
-    <header class="post-header">
-      <h1 itemprop="name" class="post-title">
-        <a itemprop="url" class="post-link" href="/wsl/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%982.html">WSL的网络问题(2)</a>
-      </h1>
-      <meta itemprop="keywords" content="wsl" />
-      <p class="post-meta">
-      目录:
-      
-      <a href="/categories/#wsl">wsl</a>
-      
-      
-      | 标签:
-      
-      <a href="/tags/#wsl" title="wsl">wsl</a>
-      
-      
-      <time itemprop="datePublished" datetime="2025-08-11">
-        | 发表时间: Aug 11, 2025
-      </time>
-      </p>
-    </header>
-
-    <article class="post-content" itemprop="articleBody">
-      
-      <h2 id="问题一ip-a-只显示一个-lo-网络适配器">问题一：<code class="language-plaintext highlighter-rouge">ip a</code> 只显示一个 lo 网络适配器</h2>
-
-<h3 id="解决方法删除-wslconfig-文件">解决方法：删除 <code class="language-plaintext highlighter-rouge">.wslconfig</code> 文件</h3>
-
-<p>首先尝试删除 Windows 用户目录下的 <code class="language-plaintext highlighter-rouge">.wslconfig</code> 文件。</p>
-
-<blockquote>
-  <p><strong>注意：</strong>
-如果删除并重启后遇到 “wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理” 的错误，这可能是由于以前安装的 <code class="language-plaintext highlighter-rouge">VMware</code> 没有完全卸载干净。</p>
-
-  <p><strong>解决方案：</strong></p>
-  <ol>
-    <li>打开 Windows 的设备管理器，检查网络适配器是否出现问题（例如，报错“代码56”）。</li>
-    <li>如果有问题，打开注册表 (regedit)，删除 <code class="language-plaintext highlighter-rouge">HKEY_CLASSES_ROOT\CLSID\{3d09c1ca-2bcc-40b7-b9bb-3f3ec143a87b}</code> 项。</li>
-  </ol>
-
-  <p>这个方法也适用于其他因网络适配器导致“代码56”错误的情况。</p>
-</blockquote>
-
-<h2 id="问题二提示-localhost-代理配置未镜像到-wsl">问题二：提示 “localhost 代理配置未镜像到 WSL”</h2>
-
-<p>如果只遇到 “检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理” 的问题，请按以下步骤操作：</p>
-
-<ol>
-  <li>
-    <p><strong>创建 <code class="language-plaintext highlighter-rouge">.wslconfig</code> 文件</strong>
-在您的 Windows 用户目录（通常是 <code class="language-plaintext highlighter-rouge">C:\Users\你的用户名\</code>）下创建一个新的文本文件，并将其命名为 <code class="language-plaintext highlighter-rouge">.wslconfig</code>。</p>
-  </li>
-  <li><strong>编辑 <code class="language-plaintext highlighter-rouge">.wslconfig</code> 文件</strong>
-在文件中输入以下内容：
-    <div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[experimental]</span>
-<span class="py">autoMemoryReclaim</span><span class="p">=</span><span class="s">gradual</span>
-<span class="py">networkingMode</span><span class="p">=</span><span class="s">mirrored</span>
-<span class="py">dnsTunneling</span><span class="p">=</span><span class="s">true</span>
-<span class="py">firewall</span><span class="p">=</span><span class="s">true</span>
-<span class="py">autoProxy</span><span class="p">=</span><span class="s">true</span>
-</code></pre></div>    </div>
-  </li>
-  <li><strong>重启 WSL 服务</strong>
-打开 <code class="language-plaintext highlighter-rouge">PowerShell</code> 或 <code class="language-plaintext highlighter-rouge">CMD</code>，输入以下命令来关闭 WSL：
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wsl <span class="nt">--shutdown</span>
-</code></pre></div>    </div>
-    <p>关闭后，重新打开您的 WSL 发行版即可。</p>
-  </li>
-  <li><strong>检查网络连接</strong>
-    <blockquote>
-      <p>如果重启后遇到无法访问外部网络的问题，请详见另一篇文章：<a href="./2025-08-11-wsl的网络问题1.md">《WSL的网络问题(1)》</a>。</p>
-    </blockquote>
-  </li>
-</ol>
-
-      
-    </article>
+  <article class="post-content" itemprop="articleBody">
     <hr />
-
-    
-
-    <header class="post-header">
-      <h1 itemprop="name" class="post-title">
-        <a itemprop="url" class="post-link" href="/wsl/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%981.html">WSL的网络问题(1)</a>
-      </h1>
-      <meta itemprop="keywords" content="wsl" />
-      <p class="post-meta">
-      目录:
-      
-      <a href="/categories/#wsl">wsl</a>
-      
-      
-      | 标签:
-      
-      <a href="/tags/#wsl" title="wsl">wsl</a>
-      
-      
-      <time itemprop="datePublished" datetime="2025-08-11">
-        | 发表时间: Aug 11, 2025
-      </time>
-      </p>
-    </header>
-
-    <article class="post-content" itemprop="articleBody">
-      
-      <hr />
 <p>在 Windows 下使用 WSL2（Windows Subsystem for Linux）时，有时会遇到以下问题：</p>
 
 <ul>
@@ -360,46 +273,65 @@ nameserver 114.114.114.114
 <hr />
 
 
-      
-    </article>
-    <hr />
-
-    
-
-    <header class="post-header">
-      <h1 itemprop="name" class="post-title">
-        <a itemprop="url" class="post-link" href="/uncategorized/2025/08/09/hello.html">Hello world!</a>
-      </h1>
-      <meta itemprop="keywords" content="HelloWorld" />
-      <p class="post-meta">
-      目录:
-      
-      <a href="/categories/#Uncategorized">Uncategorized</a>
-      
-      
-      | 标签:
-      
-      <a href="/tags/#HelloWorld" title="HelloWorld">HelloWorld</a>
-      
-      
-      <time itemprop="datePublished" datetime="2025-08-09">
-        | 发表时间: Aug 9, 2025
-      </time>
-      </p>
-    </header>
-
-    <article class="post-content" itemprop="articleBody">
-      
-      <p>Hello world! This site is my first English blog.</p>
-
-      
-    </article>
-    <hr />
-
-    
-
-  </div>
+  </article>
+  <hr />
 </div>
+
+
+<section class="pager">
+  <ul>
+    
+    <li class="previous"><a href="/uncategorized/2025/08/09/hello.html" title="Hello world!">&larr; 前一页</a></li>
+    
+    
+    <li class="next"><a href="/wsl/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%982.html" title="WSL的网络问题(2)">后一页 &rarr;</a></li>
+    
+  </ul>
+</section>
+
+<script src="/js/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    if (e.target.nodeName.toUpperCase() != 'BODY') return;
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://localhost:4000/uncategorized/2025/08/09/hello.html';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://localhost:4000/wsl/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%982.html';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+
+
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+
+  var disqus_developer = 1;
+
+var disqus_shortname ='freshman21';
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
 
     <section class="pager">
   

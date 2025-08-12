@@ -2,7 +2,15 @@
 <html>
 
 <head>
-
+<script>
+  (function() {
+    // 逻辑：如果本地存储不是'light'，就默认为黑暗模式。
+    // 这包括从未设置过（新用户）或已设置为'dark'的情况。
+    if (localStorage.getItem('theme') !== 'light') {
+      document.documentElement.classList.add('dark-mode');
+    }
+  })();
+</script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width initial-scale=1">
@@ -150,7 +158,7 @@ for (var b = blocklink.length; b--;) {
 
 <a href="#HelloWorld" title="HelloWorld" rel="1">HelloWorld<span class="size"> 1</span></a>
 
-<a href="#wsl" title="wsl" rel="1">wsl<span class="size"> 1</span></a>
+<a href="#wsl" title="wsl" rel="2">wsl<span class="size"> 2</span></a>
 
 </ul>
 
@@ -165,7 +173,10 @@ for (var b = blocklink.length; b--;) {
 <li id="wsl">wsl</li>
 
 <time datetime="2025-08-11">2025-08-11</time> &raquo;
-<a href="/uncategorized/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98.html" title="wsl的网络问题">wsl的网络问题</a><br />
+<a href="/wsl/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%982.html" title="WSL的网络问题(2)">WSL的网络问题(2)</a><br />
+
+<time datetime="2025-08-11">2025-08-11</time> &raquo;
+<a href="/wsl/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%981.html" title="WSL的网络问题(1)">WSL的网络问题(1)</a><br />
 
 
 
@@ -258,7 +269,11 @@ $(function(){
   <h4>近期文章</h4>
   
   <li>
-  <a href="/uncategorized/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98.html" title="wsl的网络问题" rel="bookmark">wsl的网络问题</a>
+  <a href="/wsl/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%982.html" title="WSL的网络问题(2)" rel="bookmark">WSL的网络问题(2)</a>
+  </li>
+  
+  <li>
+  <a href="/wsl/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%981.html" title="WSL的网络问题(1)" rel="bookmark">WSL的网络问题(1)</a>
   </li>
   
   <li>
@@ -271,7 +286,9 @@ $(function(){
 <div class="sidebar-module">
   <h4>分类目录</h4>
   
-  <li><a href="/categories/#Uncategorized" title="Uncategorized" rel="2">Uncategorized (2)</a></li>
+  <li><a href="/categories/#Uncategorized" title="Uncategorized" rel="1">Uncategorized (1)</a></li>
+  
+  <li><a href="/categories/#wsl" title="wsl" rel="2">wsl (2)</a></li>
   
 </div>
 
@@ -281,7 +298,7 @@ $(function(){
   
     <a href="/tags/#HelloWorld" title="HelloWorld" rel="1">HelloWorld</a> &nbsp;
   
-    <a href="/tags/#wsl" title="wsl" rel="1">wsl</a> &nbsp;
+    <a href="/tags/#wsl" title="wsl" rel="2">wsl</a> &nbsp;
   
 </div>
 
@@ -303,6 +320,9 @@ $(function(){
   
   
   <li id="2025" > <a href="/archives/#2025">2025</a></li>
+  
+  
+  
   
   
   
@@ -356,7 +376,70 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-<!-- <button id="theme-toggle" title="Toggle dark mode">🌙</button>
+<!-- <button id="theme-toggle" title="Toggle theme">🌙</button>
+
+<style>
+/* 按钮样式 */
+#theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+/* 暗黑模式下的按钮样式 */
+html.dark-mode #theme-toggle {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const sunIcon = '☀️';
+    const moonIcon = '🌙';
+
+    // 根据当前主题更新按钮图标的函数
+    const updateIcon = () => {
+        if (document.documentElement.classList.contains('dark-mode')) {
+            themeToggle.innerHTML = sunIcon;
+        } else {
+            themeToggle.innerHTML = moonIcon;
+        }
+    };
+
+    // 页面加载时，立即设置正确的图标
+    updateIcon();
+
+    // 添加点击事件来切换主题
+    themeToggle.addEventListener('click', () => {
+        // 在<html>标签上切换 'dark-mode' 类
+        const isDarkMode = document.documentElement.classList.toggle('dark-mode');
+        // 更新本地存储
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        // 更新图标
+        updateIcon();
+    });
+});
+</script> -->
+
+
+
+<button id="theme-toggle" title="Toggle theme">🌙</button>
 
 <style>
 #theme-toggle {
@@ -377,267 +460,88 @@ document.addEventListener('DOMContentLoaded', function () {
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     transition: all 0.3s ease;
+    transform-origin: center;
 }
-body.dark-mode #theme-toggle {
+
+html.dark-mode #theme-toggle {
     background-color: #333;
     color: #fff;
     border-color: #555;
-}
-</style>
-
-<script>
-document.addEventListener('DOMContentLoaded', (event) => {
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-    const sunIcon = '☀️';
-    const moonIcon = '🌙';
-
-    // Function to apply theme
-    const applyTheme = (theme) => {
-        if (theme === 'dark-mode') {
-            body.classList.add('dark-mode');
-            themeToggle.innerHTML = sunIcon;
-        } else {
-            body.classList.remove('dark-mode');
-            themeToggle.innerHTML = moonIcon;
-        }
-    };
-
-    // Check for saved theme preference or use system preference
-    let currentTheme = localStorage.getItem('theme');
-    if (!currentTheme) {
-        currentTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark-mode' : 'light-mode';
-    }
-    
-    applyTheme(currentTheme);
-
-    // Add click event listener
-    themeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        let newTheme = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
-        localStorage.setItem('theme', newTheme);
-        applyTheme(newTheme);
-    });
-});
-</script> -->
-
-<!-- 
-<button id="theme-toggle" title="Toggle dark mode">🌙</button>
-
-<style>
-/* 按钮的基本样式 (无变化) */
-#theme-toggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #fff;
-    color: #333;
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    /* 注意：这里的 transition 被移除了，因为我们用新的动画逻辑 */
-}
-body.dark-mode #theme-toggle {
-    background-color: #333;
-    color: #fff;
-    border-color: #555;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
 }
 
-/* --- 新增：主题切换动画 --- */
-body::before {
+#theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+#theme-toggle:active {
+    transform: scale(0.95);
+}
+
+/* 添加页面切换动画 */
+.theme-transition::after {
     content: '';
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
-    background-color: #fff; /* 默认是亮色背景 */
+    height: 100%;
+    background-color: #1a1a1a;
     z-index: 9999;
-    transform: translateX(-100%);
-    transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
 }
 
-body.dark-mode::before {
-    background-color: #202020; /* 暗色背景，请根据你的暗色模式背景调整 */
+.theme-transition.transitioning::after {
+    opacity: 1;
 }
-
-body.is-changing-theme::before {
-    transform: translateX(0);
-}
-/* --- 动画结束 --- */
-
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', function() {
     const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
+    const html = document.documentElement;
     const sunIcon = '☀️';
     const moonIcon = '🌙';
-    let isAnimating = false; // 防止连续点击
+    let isAnimating = false;
 
-    // 初始化主题（无动画）
-    const initTheme = () => {
-        const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark-mode' : 'light-mode');
-        if (savedTheme === 'dark-mode') {
-            body.classList.add('dark-mode');
+    // 添加过渡动画类
+    document.body.classList.add('theme-transition');
+
+    // 更新主题和图标
+    const updateTheme = (isDark) => {
+        if (isDark) {
+            html.classList.add('dark-mode');
             themeToggle.innerHTML = sunIcon;
         } else {
-            body.classList.remove('dark-mode');
+            html.classList.remove('dark-mode');
             themeToggle.innerHTML = moonIcon;
         }
     };
 
-    initTheme();
+    // 初始化主题
+    updateTheme(localStorage.getItem('theme') !== 'light');
 
-    // 点击事件监听
+    // 切换主题
     themeToggle.addEventListener('click', () => {
-        if (isAnimating) return; // 如果动画正在进行，则不执行任何操作
-
+        if (isAnimating) return;
         isAnimating = true;
-        const isDark = body.classList.contains('dark-mode');
-        
-        // 1. 触发“幕布”拉开的动画
-        body.classList.add('is-changing-theme');
+
+        // 添加过渡动画
+        document.body.classList.add('transitioning');
 
         setTimeout(() => {
-            // 2. 在动画进行到一半时，立即切换主题
-            if (isDark) {
-                body.classList.remove('dark-mode');
-                themeToggle.innerHTML = moonIcon;
-                localStorage.setItem('theme', 'light-mode');
-            } else {
-                body.classList.add('dark-mode');
-                themeToggle.innerHTML = sunIcon;
-                localStorage.setItem('theme', 'dark-mode');
-            }
-        }, 300); // 动画时长的一半
+            const isDark = !html.classList.contains('dark-mode');
+            updateTheme(isDark);
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
 
-        setTimeout(() => {
-            // 3. 动画结束后，移除动画类，并将“幕布”收回
-            body.classList.remove('is-changing-theme');
-            isAnimating = false; // 允许再次点击
-        }, 600); // 整个动画时长
-    });
-});
-</script> -->
-
-
-
-
-
-<button id="theme-toggle" title="Toggle dark mode">🌙</button>
-
-<style>
-/* 按钮的基本样式 (无变化) */
-#theme-toggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #e0e0e0;
-    color: #333;
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    /* 注意：这里的 transition 被移除了，因为我们用新的动画逻辑 */
-}
-body.dark-mode #theme-toggle {
-    background-color: #333;
-    color: #e0e0e0;
-    border-color: #555;
-}
-
-/* --- 新增：主题切换动画 --- */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: #e0e0e0; /* 默认是亮色背景 */
-    z-index: 9999;
-    transform: translateX(-100%);
-    transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
-}
-
-body.dark-mode::before {
-    background-color: #1a1a1a; /* 暗色背景，请根据你的暗色模式背景调整 */
-}
-
-body.is-changing-theme::before {
-    transform: translateX(0);
-}
-/* --- 动画结束 --- */
-
-</style>
-
-<script>
-document.addEventListener('DOMContentLoaded', (event) => {
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-    const sunIcon = '☀️';
-    const moonIcon = '🌙';
-    let isAnimating = false; // 防止连续点击
-
-    // 初始化主题（无动画）
-    const initTheme = () => {
-        const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark-mode' : 'light-mode');
-        if (savedTheme === 'dark-mode') {
-            body.classList.add('dark-mode');
-            themeToggle.innerHTML = sunIcon;
-        } else {
-            body.classList.remove('dark-mode');
-            themeToggle.innerHTML = moonIcon;
-        }
-    };
-
-    initTheme();
-
-    // 点击事件监听
-    themeToggle.addEventListener('click', () => {
-        if (isAnimating) return; // 如果动画正在进行，则不执行任何操作
-
-        isAnimating = true;
-        const isDark = body.classList.contains('dark-mode');
-        
-        // 1. 触发“幕布”拉开的动画
-        body.classList.add('is-changing-theme');
-
-        setTimeout(() => {
-            // 2. 在动画进行到一半时，立即切换主题
-            if (isDark) {
-                body.classList.remove('dark-mode');
-                themeToggle.innerHTML = moonIcon;
-                localStorage.setItem('theme', 'light-mode');
-            } else {
-                body.classList.add('dark-mode');
-                themeToggle.innerHTML = sunIcon;
-                localStorage.setItem('theme', 'dark-mode');
-            }
-        }, 300); // 动画时长的一半
-
-        setTimeout(() => {
-            // 3. 动画结束后，移除动画类，并将“幕布”收回
-            body.classList.remove('is-changing-theme');
-            isAnimating = false; // 允许再次点击
-        }, 600); // 整个动画时长
+            // 移除过渡动画
+            setTimeout(() => {
+                document.body.classList.remove('transitioning');
+                isAnimating = false;
+            }, 500);
+        }, 300);
     });
 });
 </script>
