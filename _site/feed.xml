@@ -5,15 +5,15 @@
     <description>Freshman21 is a Jekyll blog theme.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/zfeed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 12 Aug 2025 15:45:37 +0800</pubDate>
-    <lastBuildDate>Tue, 12 Aug 2025 15:45:37 +0800</lastBuildDate>
+    <pubDate>Tue, 12 Aug 2025 17:27:27 +0800</pubDate>
+    <lastBuildDate>Tue, 12 Aug 2025 17:27:27 +0800</lastBuildDate>
     <generator>Jekyll v4.4.1</generator>
     
       <item>
         <title>WSL的网络问题(2)</title>
-        <description>&lt;h2 id=&quot;问题一ip-a-只显示一个-lo-网络适配器&quot;&gt;问题一：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ip a&lt;/code&gt; 只显示一个 lo 网络适配器&lt;/h2&gt;
+        <description>&lt;h3 id=&quot;问题一ip-a-只显示一个-lo-网络适配器&quot;&gt;问题一：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ip a&lt;/code&gt; 只显示一个 lo 网络适配器&lt;/h3&gt;
 
-&lt;h3 id=&quot;解决方法删除-wslconfig-文件&quot;&gt;解决方法：删除 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.wslconfig&lt;/code&gt; 文件&lt;/h3&gt;
+&lt;h4 id=&quot;解决方法删除-wslconfig-文件&quot;&gt;解决方法：删除 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.wslconfig&lt;/code&gt; 文件&lt;/h4&gt;
 
 &lt;p&gt;首先尝试删除 Windows 用户目录下的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.wslconfig&lt;/code&gt; 文件。&lt;/p&gt;
 
@@ -30,7 +30,7 @@
   &lt;p&gt;这个方法也适用于其他因网络适配器导致“代码56”错误的情况。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;问题二提示-localhost-代理配置未镜像到-wsl&quot;&gt;问题二：提示 “localhost 代理配置未镜像到 WSL”&lt;/h2&gt;
+&lt;h3 id=&quot;问题二提示-localhost-代理配置未镜像到-wsl&quot;&gt;问题二：提示 “localhost 代理配置未镜像到 WSL”&lt;/h3&gt;
 
 &lt;p&gt;如果只遇到 “检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理” 的问题，请按以下步骤操作：&lt;/p&gt;
 
@@ -57,7 +57,7 @@
   &lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;检查网络连接&lt;/strong&gt;
     &lt;blockquote&gt;
-      &lt;p&gt;如果重启后遇到无法访问外部网络的问题，请详见另一篇文章：&lt;a href=&quot;./2025-08-11-wsl的网络问题1.md&quot;&gt;《WSL的网络问题(1)》&lt;/a&gt;。&lt;/p&gt;
+      &lt;p&gt;如果重启后遇到无法访问外部网络的问题，请详见另一篇文章：&lt;a href=&quot;https://angbo-sys.github.io/wsl/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%981.html&quot;&gt;《WSL的网络问题(1)》&lt;/a&gt;。&lt;/p&gt;
     &lt;/blockquote&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
