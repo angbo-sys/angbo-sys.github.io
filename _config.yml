@@ -176,9 +176,9 @@ Blogroll:
       - name: mountainatic
         href: https://mountainatic.github.io/
         title: Mountainatic's blog
-      # - name: author's website
-      #   href: http://yulijia.net/
-      #   title: Lijia Yu's website
+      - name: flinjack
+        href: https://flinjack.github.io/
+        title: Flinjack's blog      
 
 
 ### Build settings

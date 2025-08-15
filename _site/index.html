@@ -15,16 +15,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width initial-scale=1">
 
-<meta property="og:title" content="angbo's blog">
-<title>angbo's blog</title>
+<meta property="og:title" content="Angbo's blog">
+<title>Angbo's blog</title>
 <meta property="og:description" content="Freshman21 is a Jekyll blog theme.">
 <meta property="og:url" content="http://localhost:4000/">
-<meta property="og:site_name" content="angbo's blog">
+<meta property="og:site_name" content="Angbo's blog">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@">
 <meta name="twitter:creator" content="@">
-<meta name="twitter:title" content="angbo's blog">
+<meta name="twitter:title" content="Angbo's blog">
 <meta name="twitter:description" content="Freshman21 is a Jekyll blog theme.">
 <meta name="twitter:url" content="http://localhost:4000/">
 
@@ -33,7 +33,7 @@
 <link rel="icon" href="/images/favicon_1.ico">
 <link rel="stylesheet" href="/css/main.css">
 <link rel="canonical" href="http://localhost:4000/">
-<link rel="alternate" type="application/atom+xml" title="angbo's blog" href="http://localhost:4000/feed.xml" />
+<link rel="alternate" type="application/atom+xml" title="Angbo's blog" href="http://localhost:4000/feed.xml" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
@@ -90,7 +90,7 @@ for (var b = blocklink.length; b--;) {
 <header class="site-header">
   <div class="wrapper">
 
-    <h1 class="site-title"><a href="/">angbo's blog</a></h1>
+    <h1 class="site-title"><a href="/">Angbo's blog</a></h1>
     <h3 class="site-meta">A student's blog</h3>
 
     <nav class="site-nav">
@@ -296,7 +296,25 @@ for (var b = blocklink.length; b--;) {
 
 <h3 id="2解决办法"><strong>2.解决办法</strong></h3>
 
-<h4 id="1使用当前-wi-fi-的-ipv4-地址"><strong>1：使用当前 Wi-Fi 的 IPv4 地址</strong></h4>
+<h4 id="1使用公共的dns解析服务器"><strong>1:使用公共的DNS解析服务器</strong></h4>
+
+<ol>
+  <li>
+    <p>在 WSL 中：</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>vim /etc/resolv.conf
+</code></pre></div>    </div>
+
+    <p>改成：</p>
+
+    <div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nameserver</span> <span class="m">8</span>.<span class="m">8</span>.<span class="m">8</span>.<span class="m">8</span>
+<span class="n">nameserver</span> <span class="m">114</span>.<span class="m">114</span>.<span class="m">114</span>.<span class="m">114</span>
+
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h4 id="2使用当前-wi-fi-的-ipv4-地址"><strong>2：使用当前 Wi-Fi 的 IPv4 地址</strong></h4>
 
 <ol>
   <li>
@@ -333,7 +351,7 @@ for (var b = blocklink.length; b--;) {
 
 <hr />
 
-<h4 id="2使用-wsl-的虚拟网关的ipv4"><strong>2：使用 WSL 的虚拟网关的IPv4</strong></h4>
+<h4 id="3使用-wsl-的虚拟网关的ipv4"><strong>3：使用 WSL 的虚拟网关的IPv4</strong></h4>
 
 <ol>
   <li>
@@ -553,7 +571,7 @@ $(function(){
 
   <footer class="site-footer">
 
-  <p>Copyright &copy; <a href="/">angbo's blog</a></p>
+  <p>Copyright &copy; <a href="/">Angbo's blog</a></p>
   <p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a> 
   on 
   <a href="https://github.com/">Github</a>

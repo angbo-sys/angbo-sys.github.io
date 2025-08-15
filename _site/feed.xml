@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>angbo&apos;s blog</title>
+    <title>Angbo&apos;s blog</title>
     <description>Freshman21 is a Jekyll blog theme.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/zfeed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 12 Aug 2025 17:27:27 +0800</pubDate>
-    <lastBuildDate>Tue, 12 Aug 2025 17:27:27 +0800</lastBuildDate>
+    <pubDate>Fri, 15 Aug 2025 14:14:37 +0800</pubDate>
+    <lastBuildDate>Fri, 15 Aug 2025 14:14:37 +0800</lastBuildDate>
     <generator>Jekyll v4.4.1</generator>
     
       <item>
@@ -115,7 +115,25 @@
 
 &lt;h3 id=&quot;2解决办法&quot;&gt;&lt;strong&gt;2.解决办法&lt;/strong&gt;&lt;/h3&gt;
 
-&lt;h4 id=&quot;1使用当前-wi-fi-的-ipv4-地址&quot;&gt;&lt;strong&gt;1：使用当前 Wi-Fi 的 IPv4 地址&lt;/strong&gt;&lt;/h4&gt;
+&lt;h4 id=&quot;1使用公共的dns解析服务器&quot;&gt;&lt;strong&gt;1:使用公共的DNS解析服务器&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;在 WSL 中：&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;vim /etc/resolv.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;改成：&lt;/p&gt;
+
+    &lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;nameserver&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;8&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;8&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;8&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;nameserver&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;114&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;114&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;114&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;114&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;2使用当前-wi-fi-的-ipv4-地址&quot;&gt;&lt;strong&gt;2：使用当前 Wi-Fi 的 IPv4 地址&lt;/strong&gt;&lt;/h4&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -152,7 +170,7 @@
 
 &lt;hr /&gt;
 
-&lt;h4 id=&quot;2使用-wsl-的虚拟网关的ipv4&quot;&gt;&lt;strong&gt;2：使用 WSL 的虚拟网关的IPv4&lt;/strong&gt;&lt;/h4&gt;
+&lt;h4 id=&quot;3使用-wsl-的虚拟网关的ipv4&quot;&gt;&lt;strong&gt;3：使用 WSL 的虚拟网关的IPv4&lt;/strong&gt;&lt;/h4&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
