@@ -5,8 +5,8 @@
     <description>Freshman21 is a Jekyll blog theme.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/zfeed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 15 Aug 2025 14:14:37 +0800</pubDate>
-    <lastBuildDate>Fri, 15 Aug 2025 14:14:37 +0800</lastBuildDate>
+    <pubDate>Fri, 15 Aug 2025 14:53:33 +0800</pubDate>
+    <lastBuildDate>Fri, 15 Aug 2025 14:53:33 +0800</lastBuildDate>
     <generator>Jekyll v4.4.1</generator>
     
       <item>
@@ -79,7 +79,7 @@
 &lt;p&gt;在 Windows 下使用 WSL2（Windows Subsystem for Linux）时，有时会遇到以下问题：&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt update&lt;/code&gt; / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ping google.com&lt;/code&gt; / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git clone&lt;/code&gt; 等命令提示 &lt;strong&gt;“Temporary failure in name resolution”&lt;/strong&gt; 或 &lt;strong&gt;“Could not resolve host”&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt update&lt;/code&gt; / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ping google.com&lt;/code&gt; / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gif clone&lt;/code&gt; 等命令提示 &lt;strong&gt;“Temporary failure in name resolution”&lt;/strong&gt; 或 &lt;strong&gt;“Could not resolve host”&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;这种问题的本质是 &lt;strong&gt;WSL 内部的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/resolv.conf&lt;/code&gt; 配置了一个无法正常访问的 DNS 服务器&lt;/strong&gt;。&lt;/p&gt;

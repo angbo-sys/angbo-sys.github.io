@@ -78,7 +78,83 @@ for (var b = blocklink.length; b--;) {
   body {
     cursor: url('/images/Alternate.gif'), auto;
   }
+  a, [role="link"], button, [role="button"] {
+    cursor: url('/images/cursors/Link.gif'), pointer !important;
+}
 </style>
+
+<!-- <style>
+/* 1. 默认选择（Normal） */
+body, html {
+  cursor: url('/images/cursors/Normal.gif'), auto !important;
+}
+
+/* 2. 文本选择（Text） */
+input[type="text"], textarea, [contenteditable="true"] {
+  cursor: url('/images/cursors/Text.gif'), text !important;
+}
+
+/* 3. 链接（Link） */
+a, [role="link"], button, [role="button"] {
+  cursor: url('/images/cursors/Link.gif'), pointer !important;
+}
+
+/* 4. 等待/忙碌（Busy / Working） */
+.waiting, .loading {
+  cursor: url('/images/cursors/Busy.gif'), wait !important;
+}
+.working {
+  cursor: url('/images/cursors/Working.gif'), progress !important;
+}
+
+/* 5. 移动（Move） */
+.move, [draggable="true"] {
+  cursor: url('/images/cursors/Move.gif'), move !important;
+}
+
+/* 6. 禁用（Unavailable） */
+.disabled, [disabled], .not-allowed {
+  cursor: url('/images/cursors/Unavailable.gif'), not-allowed !important;
+}
+
+/* 7. 帮助（Help） */
+.help {
+  cursor: url('/images/cursors/Help.gif'), help !important;
+}
+
+/* 8. 精确选择（Precision） */
+.precision {
+  cursor: url('/images/cursors/Precision.gif'), crosshair !important;
+}
+
+/* 9. 手写输入（Handwriting） */
+.handwriting {
+  cursor: url('/images/cursors/Handwriting.gif'), default !important;
+}
+
+/* 10. 四向/斜向/水平/垂直调整大小 */
+.resize-ew {
+  cursor: url('/images/cursors/Horizontal.gif'), ew-resize !important;
+}
+.resize-ns {
+  cursor: url('/images/cursors/Vertical.gif'), ns-resize !important;
+}
+.resize-nesw {
+  cursor: url('/images/cursors/Diagonal1.gif'), nesw-resize !important;
+}
+.resize-nwse {
+  cursor: url('/images/cursors/Diagonal2.gif'), nwse-resize !important;
+}
+
+/* 11. 特殊光标（Pin / Person） */
+.pin {
+  cursor: url('/images/cursors/Pin.cur'), default !important;
+}
+.person {
+  cursor: url('/images/cursors/Person.cur'), default !important;
+}
+</style> -->
+
 
 
 <body>
@@ -348,6 +424,8 @@ $(function(){
   <h4>良师益友</h4>
   
   <li><a href="https://mountainatic.github.io/" title="Mountainatic's blog">mountainatic</a></li>
+  
+  <li><a href="https://flinjack.github.io/" title="Flinjack's blog">flinjack</a></li>
   
 </div>
 

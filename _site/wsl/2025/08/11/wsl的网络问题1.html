@@ -17,7 +17,7 @@
 
 <meta property="og:title" content="WSL的网络问题(1)">
 <title>WSL的网络问题(1)</title>
-<meta property="og:description" content="在 Windows 下使用 WSL2（Windows Subsystem for Linux）时，有时会遇到以下问题：  apt update / ping google.com / git clone 等命令提示 “Temporary failure in name resolution” 或 “Could n...">
+<meta property="og:description" content="在 Windows 下使用 WSL2（Windows Subsystem for Linux）时，有时会遇到以下问题：  apt update / ping google.com / gif clone 等命令提示 “Temporary failure in name resolution” 或 “Could n...">
 <meta property="og:url" content="http://localhost:4000/wsl/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%981.html">
 <meta property="og:site_name" content="Angbo's blog">
 <meta property="og:locale" content="en_US">
@@ -25,7 +25,7 @@
 <meta name="twitter:site" content="@">
 <meta name="twitter:creator" content="@">
 <meta name="twitter:title" content="WSL的网络问题(1)">
-<meta name="twitter:description" content="在 Windows 下使用 WSL2（Windows Subsystem for Linux）时，有时会遇到以下问题：  apt update / ping google.com / git clone 等命令提示 “Temporary failure in name resolution” 或 “Could n...">
+<meta name="twitter:description" content="在 Windows 下使用 WSL2（Windows Subsystem for Linux）时，有时会遇到以下问题：  apt update / ping google.com / gif clone 等命令提示 “Temporary failure in name resolution” 或 “Could n...">
 <meta name="twitter:url" content="http://localhost:4000/wsl/2025/08/11/wsl%E7%9A%84%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%981.html">
 
 <meta name="keywords" content="Jekyll, theme, Freshman21,blog">
@@ -78,7 +78,83 @@ for (var b = blocklink.length; b--;) {
   body {
     cursor: url('/images/Alternate.gif'), auto;
   }
+  a, [role="link"], button, [role="button"] {
+    cursor: url('/images/cursors/Link.gif'), pointer !important;
+}
 </style>
+
+<!-- <style>
+/* 1. 默认选择（Normal） */
+body, html {
+  cursor: url('/images/cursors/Normal.gif'), auto !important;
+}
+
+/* 2. 文本选择（Text） */
+input[type="text"], textarea, [contenteditable="true"] {
+  cursor: url('/images/cursors/Text.gif'), text !important;
+}
+
+/* 3. 链接（Link） */
+a, [role="link"], button, [role="button"] {
+  cursor: url('/images/cursors/Link.gif'), pointer !important;
+}
+
+/* 4. 等待/忙碌（Busy / Working） */
+.waiting, .loading {
+  cursor: url('/images/cursors/Busy.gif'), wait !important;
+}
+.working {
+  cursor: url('/images/cursors/Working.gif'), progress !important;
+}
+
+/* 5. 移动（Move） */
+.move, [draggable="true"] {
+  cursor: url('/images/cursors/Move.gif'), move !important;
+}
+
+/* 6. 禁用（Unavailable） */
+.disabled, [disabled], .not-allowed {
+  cursor: url('/images/cursors/Unavailable.gif'), not-allowed !important;
+}
+
+/* 7. 帮助（Help） */
+.help {
+  cursor: url('/images/cursors/Help.gif'), help !important;
+}
+
+/* 8. 精确选择（Precision） */
+.precision {
+  cursor: url('/images/cursors/Precision.gif'), crosshair !important;
+}
+
+/* 9. 手写输入（Handwriting） */
+.handwriting {
+  cursor: url('/images/cursors/Handwriting.gif'), default !important;
+}
+
+/* 10. 四向/斜向/水平/垂直调整大小 */
+.resize-ew {
+  cursor: url('/images/cursors/Horizontal.gif'), ew-resize !important;
+}
+.resize-ns {
+  cursor: url('/images/cursors/Vertical.gif'), ns-resize !important;
+}
+.resize-nesw {
+  cursor: url('/images/cursors/Diagonal1.gif'), nesw-resize !important;
+}
+.resize-nwse {
+  cursor: url('/images/cursors/Diagonal2.gif'), nwse-resize !important;
+}
+
+/* 11. 特殊光标（Pin / Person） */
+.pin {
+  cursor: url('/images/cursors/Pin.cur'), default !important;
+}
+.person {
+  cursor: url('/images/cursors/Person.cur'), default !important;
+}
+</style> -->
+
 
 
 <body>
@@ -173,7 +249,7 @@ for (var b = blocklink.length; b--;) {
 <p>在 Windows 下使用 WSL2（Windows Subsystem for Linux）时，有时会遇到以下问题：</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">apt update</code> / <code class="language-plaintext highlighter-rouge">ping google.com</code> / <code class="language-plaintext highlighter-rouge">git clone</code> 等命令提示 <strong>“Temporary failure in name resolution”</strong> 或 <strong>“Could not resolve host”</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">apt update</code> / <code class="language-plaintext highlighter-rouge">ping google.com</code> / <code class="language-plaintext highlighter-rouge">gif clone</code> 等命令提示 <strong>“Temporary failure in name resolution”</strong> 或 <strong>“Could not resolve host”</strong></li>
 </ul>
 
 <p>这种问题的本质是 <strong>WSL 内部的 <code class="language-plaintext highlighter-rouge">/etc/resolv.conf</code> 配置了一个无法正常访问的 DNS 服务器</strong>。</p>
@@ -470,6 +546,8 @@ $(function(){
   <h4>良师益友</h4>
   
   <li><a href="https://mountainatic.github.io/" title="Mountainatic's blog">mountainatic</a></li>
+  
+  <li><a href="https://flinjack.github.io/" title="Flinjack's blog">flinjack</a></li>
   
 </div>
 
