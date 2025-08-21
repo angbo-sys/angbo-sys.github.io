@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Guestbook
-comments: yes
+comments: no
 permalink: /guestbook/
 ---
 ## Hi, welcome to leave a message here.:)
